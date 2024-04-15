@@ -27,7 +27,7 @@ export default function Local() {
     };
     Data();
   }, []);
-  console.log(localDate);
+
   return (
     <div>
       {localDate && (

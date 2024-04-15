@@ -1,31 +1,47 @@
+import { useState, useEffect } from "react";
+import axios from "axios";
+import "./style.css";
+export default function Previsao() {
+  const [previsaoDate, setPrevisaoDate] = useState([]);
+  const [previsaoDate2, setPrevisaoDate2] = useState([]);
 
-import { useState, useEffect } from "react"
-import  axios  from "axios"
-
-export default function Previsao(){
-const [previsaoDate, setPrevisaoDate] = useState(null)
-
-useEffect(() =>{
-    const response = async () =>{
-try{
-    const date = await axios.get('https://api.weatherstack.com/forecast',{
-        params:{
-            access_key: "e24728ba2751422680c51701240704",
-            query: 'salvador',
-            forecast_days: 1
-        }
-    })
-setPrevisaoDate(date.data)
-}
-catch{
-console.error('error api')
-}
-
-    }
-    response()
-},[])
+  useEffect(() => {
+    const response = async () => {
+      try {
+        const date = await axios.get(
+          "https://api.weatherbit.io/v2.0/forecast/daily",
+          {
+            params: {
+              key: "72ca62adaaea4120a589693c9e0b744b",
+              city: "salvador",
+              days: 7,
+              lang:'pt',
+              units:'M'
+            },
+          }
+        );
+        setPrevisaoDate(date.data.data);
+        setPrevisaoDate2(date.data)
+      } catch {
+        console.error("error api");
+      }
+    };
+    response();
+  }, []);
 console.log(previsaoDate)
-    return(
-        <div></div>
-    )
+
+  return (
+    <div className="containerPRev">
+      {previsaoDate.map((item,index) => {
+        return (
+          <div  key={index}>
+           
+           <div><img src={`https://www.weatherbit.io/static/img/icons/${item.weather.icon}.png`} alt="icon" /></div>
+           <div><span>{item.weather.description}</span></div>
+           <div><span>{item.datetime}</span></div>
+          </div>
+        );
+      })}
+    </div>
+  );
 }
