@@ -6,9 +6,23 @@
     max-height: 250px;
     
 }
-.containerPRev{
+.containerPrev{
     display: flex;
     flex-flow: wrap;
     gap: 10px;
+    justify-content: center;
     
+}
+.div-prev{
+    background-color: rgba(255, 255, 255, 0.486);
+    width: 13%;
+    display: flex;
+    align-items: center;
+    border-radius: 8px;
+    flex-direction: column;
+    height: 50vh;
+}
+.semana{
+    font-size: 18px;
+    text-transform: uppercase;
 }

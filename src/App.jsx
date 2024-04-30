@@ -8,7 +8,7 @@ import { ReactComponent as Right } from "./icon/right.svg";
 import Slider from "react-slick";
 function App() {
 
-
+  
     const settings = {
       className: "Sliders2",
       dots: false,
@@ -41,8 +41,10 @@ function App() {
         
         <div>
           <div className="containerApp">
-            <div className="titulo"><span>Hoje</span></div>
+            <div className="tituloDiv"><span className="titulo">Previsão de Hoje</span></div>
+           
       <div className="box">
+        oi
         <div >
           <Tempo />
         </div>
@@ -53,7 +55,10 @@ function App() {
       </div>
       </div>
 
-      <div className="containerApp2"><Previsao/></div>
+      <div className="containerApp2">
+      <div className="tituloDiv"><span className="titulo2">Previsão da semana</span></div>
+       <div> <Previsao/></div>
+        </div>
       
       </Slider>
     </div>
